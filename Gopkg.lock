@@ -27,7 +27,7 @@
 
 [[projects]]
   name = "github.com/docker/libkv"
-  packages = [".","store","store/boltdb","store/consul"]
+  packages = [".","store","store/boltdb","store/consul","store/zookeeper"]
   revision = "aabc039ad04deb721e234f99cd1b4aa28ac71a40"
   version = "v0.2.1"
 
@@ -134,6 +134,11 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/samuel/go-zookeeper"
+  packages = ["zk"]
+  revision = "6f3354f2c5c415a857b8949ab0582937c0f908c0"
+
+[[projects]]
   branch = "master"
   name = "github.com/sethgrid/pester"
   packages = ["."]
@@ -190,6 +195,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "31a8e0b536f3b7bdc59f2f911ba5060012b81357402532c1525544065f9d02ea"
+  inputs-digest = "0ae09af8274395c0c77f1c54a08ca69ad4f36c0cd09abc9ce4616da381b98a61"
   solver-name = "gps-cdcl"
   solver-version = 1

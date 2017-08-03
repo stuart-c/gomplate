@@ -48,6 +48,7 @@ func init() {
 	addSourceReader("consul+http", readConsul)
 	addSourceReader("consul+https", readConsul)
 	addSourceReader("boltdb", readBoltDB)
+	addSourceReader("zk", readZookeeper)
 }
 
 var sourceReaders map[string]func(*Source, ...string) ([]byte, error)
@@ -410,6 +411,30 @@ func readBoltDB(source *Source, args ...string) ([]byte, error) {
 		return nil, errors.New("missing key")
 	}
 	p := args[0]
+
+	data, err := source.KV.Read(p)
+	if err != nil {
+		return nil, err
+	}
+	source.Type = plaintext
+
+	return data, nil
+}
+
+func readZookeeper(source *Source, args ...string) ([]byte, error) {
+	if source.KV == nil {
+		source.KV = libkv.NewZookeeper(source.URL)
+		err := source.KV.Login()
+		addCleanupHook(source.KV.Logout)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	p := source.URL.Path
+	if len(args) == 1 {
+		p = p + "/" + args[0]
+	}
 
 	data, err := source.KV.Read(p)
 	if err != nil {
