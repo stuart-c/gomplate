@@ -20,6 +20,18 @@
   version = "v1.3.1"
 
 [[projects]]
+  name = "github.com/coreos/etcd"
+  packages = ["client","pkg/pathutil","pkg/srv","pkg/types","version"]
+  revision = "c31bec0f29facff13f7c3e3d948e55dd6689ed42"
+  version = "v3.2.4"
+
+[[projects]]
+  name = "github.com/coreos/go-semver"
+  packages = ["semver"]
+  revision = "8ab6407b697782a06568d4b7f1db25550ec2e4c6"
+  version = "v0.2.0"
+
+[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
@@ -27,7 +39,7 @@
 
 [[projects]]
   name = "github.com/docker/libkv"
-  packages = [".","store","store/boltdb","store/consul"]
+  packages = [".","store","store/boltdb","store/consul","store/etcd"]
   revision = "aabc039ad04deb721e234f99cd1b4aa28ac71a40"
   version = "v0.2.1"
 
@@ -166,7 +178,7 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
-  packages = ["http2","http2/hpack","idna","lex/httplex"]
+  packages = ["context","http2","http2/hpack","idna","lex/httplex"]
   revision = "f5079bd7f6f74e23c4d65efa0f4ce14cbd6a3c0f"
 
 [[projects]]
@@ -190,6 +202,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "31a8e0b536f3b7bdc59f2f911ba5060012b81357402532c1525544065f9d02ea"
+  inputs-digest = "0659ce1a896cc095455a61af096b2248d0aa8fb204bcf89b1fd072b5fed535b4"
   solver-name = "gps-cdcl"
   solver-version = 1
